@@ -1,0 +1,258 @@
+<?php
+namespace Edumarkelementor\Widgets;
+
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Scheme_Color;
+use Elementor\Utils;
+use Elementor\Scheme_Typography;
+use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Text_Shadow;
+
+
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+
+/**
+ *
+ * Edumark elementor data-center section widget.
+ *
+ * @since 1.0
+ */
+class Edumark_Data_Centers extends Widget_Base {
+
+	public function get_name() {
+		return 'edumark-data-center-section';
+	}
+
+	public function get_title() {
+		return __( 'Data Centers', 'edumark-companion' );
+	}
+
+	public function get_icon() {
+		return 'eicon-play-o';
+	}
+
+	public function get_categories() {
+		return [ 'edumark-elements' ];
+	}
+
+	protected function _register_controls() {
+
+        // ----------------------------------------  Data Center Section ------------------------------
+        $this->start_controls_section(
+            'data_centers_content',
+            [
+                'label' => __( 'Data Centers Content', 'edumark-companion' ),
+            ]
+        );
+        
+        $this->add_control(
+            'sec_title',
+            [
+                'label' => esc_html__( 'Section Title', 'edumark-companion' ),
+                'type' => Controls_Manager::TEXT,
+                'label_block' => true,
+                'default'   => 'Our Data Centers',
+            ]
+        );
+        $this->add_control(
+            'sub_title',
+            [
+                'label' => esc_html__( 'Sub Title', 'edumark-companion' ),
+                'type' => Controls_Manager::TEXTAREA,
+                'label_block' => true,
+                'default'   => 'Your domain control panel is designed for ease-of-use and <br>allows for all aspects of your domains.',
+            ]
+        );
+
+        $this->add_control(
+            'data_centers_seperator',
+            [
+                'label' => esc_html__( 'Add Data Center', 'edumark-companion' ),
+                'type' => Controls_Manager::HEADING,
+                'separator' => 'after'
+            ]
+        );
+        $this->add_control(
+            'locations', [
+                'label' => __( 'Create New', 'edumark-companion' ),
+                'type' => Controls_Manager::REPEATER,
+                'title_field' => '{{{ item_title }}}',
+                'fields' => [
+                    [
+                        'name' => 'item_title',
+                        'label' => __( 'Location Title', 'edumark-companion' ),
+                        'label_block' => true,
+                        'type' => Controls_Manager::TEXT,
+                        'default' => __( 'Sydney, Australia', 'edumark-companion' ),
+                    ],
+                    [
+                        'name' => 'sub_title',
+                        'label' => __( 'Location Text', 'edumark-companion' ),
+                        'label_block' => true,
+                        'type' => Controls_Manager::TEXTAREA,
+                        'default' => 'It is a long established fact that <br>a reader',
+                    ],
+                    [
+                        'name' => 'top_position',
+                        'label' => __( 'Top Position', 'edumark-companion' ),
+                        'label_block' => true,
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ '%' ],
+                        'range' => [
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        'default' => [
+                            'unit' => '%',
+                            'size' => 20,
+                        ],
+                    ],
+                    [
+                        'name' => 'left_position',
+                        'label' => __( 'Left Position', 'edumark-companion' ),
+                        'label_block' => true,
+                        'type' => Controls_Manager::SLIDER,
+                        'size_units' => [ '%' ],
+                        'range' => [
+                            '%' => [
+                                'min' => 0,
+                                'max' => 100,
+                            ],
+                        ],
+                        'default' => [
+                            'unit' => '%',
+                            'size' => 50,
+                        ],
+                    ],
+                ],
+                'default'   => [
+                    [      
+                        'item_title' => __( 'Sydney, Australia', 'edumark-companion' ),
+                        'sub_title'  => 'It is a long established fact that <br>a reader',
+                    ],
+                    [      
+                        'item_title' => __( 'Sydney, Australia', 'edumark-companion' ),
+                        'sub_title'  => 'It is a long established fact that <br>a reader',
+                    ],
+                    [      
+                        'item_title' => __( 'Sydney, Australia', 'edumark-companion' ),
+                        'sub_title'  => 'It is a long established fact that <br>a reader',
+                    ],
+                    [      
+                        'item_title' => __( 'Sydney, Australia', 'edumark-companion' ),
+                        'sub_title'  => 'It is a long established fact that <br>a reader',
+                    ],
+                ]
+            ]
+		);
+        
+        
+        $this->end_controls_section(); // End support_section
+
+        //------------------------------ Style title ------------------------------
+        
+        // Top Section Styles
+        $this->start_controls_section(
+            'left_sec_style', [
+                'label' => __( 'Top Section Styles', 'edumark-companion' ),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+			'big_title_col', [
+				'label' => __( 'Big Title Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .data_center_area .section_title h3' => 'color: {{VALUE}};',
+				],
+			]
+        );
+
+        $this->add_control(
+			'sub_title_col', [
+				'label' => __( 'Sub title Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .data_center_area .section_title p' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->end_controls_section();
+
+	}
+
+	protected function render() {
+    $settings     = $this->get_settings();
+    $sec_title    = !empty( $settings['sec_title'] ) ? esc_html( $settings['sec_title'] ) : '';
+    $sub_title    = !empty( $settings['sub_title'] ) ? wp_kses_post( nl2br( $settings['sub_title'] )) : '';
+    $locations    = !empty( $settings['locations'] ) ? $settings['locations'] : '';
+    $map_path     = esc_url( EDUMARK_DIR_ASSETS_URI . 'img/map.svg' );
+    ?>
+    
+    <div class="data_center_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+                        <?php 
+                            if ( $sec_title ) { 
+                                echo "<h3>{$sec_title}</h3>";
+                            }
+                            if ( $sub_title ) { 
+                                echo "<p>{$sub_title}</p>";
+                            }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="location">
+                        <div class="pulse_group">
+                            <?php 
+                            if( is_array( $locations ) && count( $locations ) > 0 ) {
+                                foreach( $locations as $item ) {
+                                    $item_title    = ( !empty( $item['item_title'] ) ) ? esc_html($item['item_title']) : '';
+                                    $sub_title     = ( !empty( $item['sub_title'] ) ) ? wp_kses_post( nl2br( $item['sub_title'] ) ) : '';
+                                    $top_position  = 'top: '.$item['top_position']['size'].'%;';
+                                    $left_position = 'left: '.$item['left_position']['size'].'%;';
+                                    ?>
+                                    <span style="<?=$top_position.$left_position?>">
+                                        <div class="address_on_hover d-none d-lg-block">
+                                            <div class="address_inner">
+                                                <i class="fa fa-map-marker"></i>
+                                                <?php 
+                                                    if ( $item_title ) { 
+                                                        echo "<h3>{$item_title}</h3>";
+                                                    }
+                                                    if ( $sub_title ) { 
+                                                        echo "<p>{$sub_title}</p>";
+                                                    }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </span>
+                                    <?php 
+                                }
+                            }
+                            ?>
+                        </div>
+                        <img src="<?=$map_path?>" alt="map image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+
+    }
+}
