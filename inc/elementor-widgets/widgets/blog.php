@@ -113,35 +113,17 @@ class Edumark_Blog extends Widget_Base {
                 'label'     => __( 'Section Title Color', 'edumark-companion' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .latest_new_area .section_title h3' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .our_latest_blog .section_title h3' => 'color: {{VALUE}};',
                 ],
             ]
         );
         $this->add_control(
-            'section_sub_title_color', [
-                'label'     => __( 'Section Sub Title Color', 'edumark-companion' ),
+            'heighlighted_color', [
+                'label'     => __( 'Heighlighted Color', 'edumark-companion' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .latest_new_area .section_title p' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'blog_styles_sep',
-            [
-                'label'     => __( 'Blog Styles', 'edumark-companion' ),
-                'type'      => Controls_Manager::HEADING,
-                'separator' => 'before',
-            ]
-        );
-
-        $this->add_control(
-            'item_title_color', [
-                'label'     => __( 'Blog Title Color', 'edumark-companion' ),
-                'type'      => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .latest_new_area .single_news .news_content h3 a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .our_latest_blog .single_latest_blog .content_blog .date p a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .our_latest_blog .single_latest_blog .content_blog .blog_meta h3 a:hover' => 'color: {{VALUE}};',
                 ],
             ]
         );

@@ -150,21 +150,39 @@ class Edumark_About_Us extends Widget_Base {
             ]
         );
         $this->add_control(
-			'exp_val_col', [
-				'label' => __( 'Experience Value Color', 'edumark-companion' ),
+			'sec_title_col', [
+				'label' => __( 'Section Title Color', 'edumark-companion' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .about_area .about_thumb .exprience h1' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .about_area .single_about_info h3' => 'color: {{VALUE}};',
 				],
 			]
         );
-
         $this->add_control(
-			'exp_txt_col', [
-				'label' => __( 'Experience Text Color', 'edumark-companion' ),
+			'text_col', [
+				'label' => __( 'Text Color', 'edumark-companion' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .about_area .about_thumb .exprience span' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .about_area .single_about_info p' => 'color: {{VALUE}};',
+				],
+			]
+        );
+        $this->add_control(
+			'btn_bg_col', [
+				'label' => __( 'Button BG Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .about_area .single_about_info .boxed_btn' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .about_area .single_about_info .boxed_btn:hover' => 'color: {{VALUE}} !important; border-color: {{VALUE}}; background: transparent;',
+				],
+			]
+        );
+        $this->add_control(
+			'btn_hover_col', [
+				'label' => __( 'Button Hover Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .about_area .single_about_info .boxed_btn:hover' => 'color: {{VALUE}} !important; border-color: {{VALUE}}; background: transparent;',
 				],
 			]
         );
@@ -178,78 +196,31 @@ class Edumark_About_Us extends Widget_Base {
             ]
         );
         $this->add_control(
-            'sub_title_col', [
-                'label' => __( 'Sub Title Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_info .section_title .sub_heading' => 'color: {{VALUE}};',
-                ],
-            ]
+			'circles_col', [
+				'label' => __( 'First Circles Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .about_area .about_tutorials .courses .inner_courses::before' => 'background: {{VALUE}};',
+				],
+			]
         );
         $this->add_control(
-            'sec_title_col', [
-                'label' => __( 'Sec Title Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_info .section_title h3' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .about_info .section_title .seperator' => 'background: {{VALUE}};',
-                ],
-            ]
+			'sec_circle_col', [
+				'label' => __( 'Second Circle Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .about_area .about_tutorials .courses-blue .inner_courses::before' => 'background: {{VALUE}};',
+				],
+			]
         );
         $this->add_control(
-            'sec_text_col', [
-                'label' => __( 'Sec Text Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_area .about_info p' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .about_area .about_info ul li' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'list_circle_col', [
-                'label' => __( 'List Item Circle Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_area .about_info ul li::before' => 'background: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'btn_styles_seperator',
-            [
-                'label' => esc_html__( 'Button Styles', 'edumark-companion' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'after'
-            ]
-        );
-        $this->add_control(
-            'btn_txt_col', [
-                'label' => __( 'Button Text & Border Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_area .about_info a' => 'color: {{VALUE}} !important; border-color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'btn_hvr_bg_col', [
-                'label' => __( 'Button Hover Bg & Border Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_area .about_info a:hover' => 'background: {{VALUE}}; border-color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'btn_hvr_txt_col', [
-                'label' => __( 'Button Hover Text Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .about_area .about_info a:hover' => 'color: {{VALUE}} !important;',
-                ],
-            ]
+			'third_circles_col', [
+				'label' => __( 'Third Circle Color', 'edumark-companion' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .about_area .about_tutorials .courses-sky .inner_courses::before' => 'background: {{VALUE}};',
+				],
+			]
         );
 
         $this->end_controls_section();

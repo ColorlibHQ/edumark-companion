@@ -34,7 +34,7 @@ class Edumark_Team_Members extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-settings';
+		return 'eicon-person';
 	}
 
 	public function get_categories() {
@@ -159,65 +159,6 @@ class Edumark_Team_Members extends Widget_Base {
             ]
 		);
 		$this->end_controls_section(); // End service content
-
-    /**
-     * Style Tab
-     * ------------------------------ Style Section Heading ------------------------------
-     *
-     */
-
-        $this->start_controls_section(
-            'style_room_section', [
-                'label' => __( 'Style Service Section', 'edumark-companion' ),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        );
-        $this->add_control(
-            'sub_title_col', [
-                'label' => __( 'Sub Title Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .team_area .section_title .sub_heading' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'big_title_col', [
-                'label' => __( 'Big Title Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .team_area .section_title h3' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'member_styles_seperator',
-            [
-                'label' => esc_html__( 'Member Styles', 'edumark-companion' ),
-                'type' => Controls_Manager::HEADING,
-                'separator' => 'after'
-            ]
-        );
-        $this->add_control(
-            'member_name_col', [
-                'label' => __( 'Member Name Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .team_area .single_team h3' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'member_desig_color', [
-                'label' => __( 'Member Designation Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .team_area .single_team p' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->end_controls_section();
 
 	}
 

@@ -32,11 +32,13 @@ add_filter( 'pt-ocdi/import_files', 'edumark_import_files' );
 function edumark_after_import_setup() {
 	// Assign menus to their locations.
 	$main_menu   		= get_term_by( 'name', 'Main Menu', 'nav_menu' );
-	$navigation_menu   	= get_term_by( 'name', 'Navigation', 'nav_menu' );
+	$courses_menu   	= get_term_by( 'name', 'Courses', 'nav_menu' );
+	$resources_menu   	= get_term_by( 'name', 'Resources', 'nav_menu' );
 
 	set_theme_mod( 'nav_menu_locations', array(
 			'primary-menu'  	=> $main_menu->term_id,
-			'navigation-menu'  	=> $navigation_menu->term_id,
+			'courses-menu'  	=> $courses_menu->term_id,
+			'resources-menu'  	=> $resources_menu->term_id,
 		)
 	);
 

@@ -208,7 +208,13 @@ add_action( 'init', 'edumark_custom_posts' );
     Popular courses navs
 ========================================================*/
 function get_popular_courses_navs(){ 
-	$course_cats = get_terms( ['taxonomy' => 'course-cat'] );
+	$course_cats = get_terms(
+		'course-cat',
+		[
+			'orderby'  => 'count',
+			'order'    => 'DESC'
+		]
+	);
 	$i = 1;
 	?>
 	<nav>
@@ -234,62 +240,87 @@ function get_popular_courses_navs(){
     Courses Section
 ========================================================*/
 function edumark_course_section( $pNumber = 6 ){ 
-	$course_cats = get_terms( ['taxonomy' => 'course-cat'] );
 	$i = 1;
 	?>
 	<div class="tab-content" id="myTabContent">
-		<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        
-			<div class="row">
-				<?php
-					$courses = new WP_Query( array(
-						'post_type' => 'course',
-						'posts_per_page'=> $pNumber,
-				
-					) );
-
-					if( $courses->have_posts() ) {
-						while ( $courses->have_posts() ) {
-							$courses->the_post();
-							$course_cat = get_the_terms( get_the_ID(), "course-cat");
-							$regular_fee = get_post_meta( get_the_ID(), 'course_fee_regular', true );
-							$discount_fee = get_post_meta( get_the_ID(), 'course_fee_discount', true );
-							?>
-							<div class="col-xl-4 col-lg-4 col-md-6">
-								<div class="single_courses">
-									<div class="thumb">
-										<?php 
-											if ( has_post_thumbnail() ) {
-												the_post_thumbnail( 'edumark_course_thumb_362x250', ['alt' => get_the_title()] );
-											}
-										?>
-									</div>
-									<div class="courses_info">
-										<span><?=$course_cat[0]->name?></span>
-										<h3><a href="#"><?=the_title()?></a></h3>
-										<div class="star_prise d-flex justify-content-between">
-											<div class="star">
-												<i class="flaticon-mark-as-favorite-star"></i>
-												<span>(4.5)</span>
-											</div>
-											<div class="prise">
-												<span class="offer"><?=$regular_fee?></span>
-												<span class="active_prise"><?=$discount_fee?></span>
+		<?php
+		$course_cats = get_terms(
+			'course-cat',
+			[
+				'orderby'  => 'count',
+				'order'    => 'DESC'
+			]
+		);
+		if( $course_cats ) {
+			foreach( $course_cats as $cat ) {
+				?>
+				<div class="tab-pane fade<?=esc_attr($i==1?' show active':'')?>" id="<?=esc_attr($cat->slug);?>" role="tabpanel" aria-labelledby="<?=esc_attr($cat->slug);?>-tab">
+					<div class="row">
+						<?php
+						$args = [
+							'post_type'      => 'course',
+							'posts_per_page' => $pNumber,
+							'post_status'    => 'publish',
+							'tax_query' => 
+							[
+								[
+									'taxonomy' => 'course-cat',
+									'field'    => 'slug',
+									'terms'    => $cat->slug,
+								],
+							],
+							'ignore_sticky_posts'   => true
+						];
+						$courses = new WP_Query( $args );
+						if( $courses->have_posts() ) {
+							while( $courses->have_posts() ) {
+								$courses->the_post();
+								$regular_fee = get_post_meta( get_the_ID(), 'course_fee_regular', true );
+								$discount_fee = get_post_meta( get_the_ID(), 'course_fee_discount', true );
+								?>
+								<div class="col-xl-4 col-lg-4 col-md-6">
+									<div class="single_courses">
+										<div class="thumb">
+											<?php 
+												if ( has_post_thumbnail() ) {
+													echo '<a href="'.get_the_permalink().'">';
+														the_post_thumbnail( 'edumark_course_thumb_362x250', ['alt' => get_the_title()] );
+													echo '</a>';
+												}
+											?>
+										</div>
+										<div class="courses_info">
+											<span><?=esc_html($cat->name)?></span>
+											<h3><a href="<?=the_permalink()?>"><?=the_title()?></a></h3>
+											<div class="star_prise d-flex justify-content-between">
+												<div class="star">
+													<i class="flaticon-mark-as-favorite-star"></i>
+													<span>(4.5)</span>
+												</div>
+												<div class="prise">
+													<span class="offer"><?=$regular_fee?></span>
+													<span class="active_prise"><?=$discount_fee?></span>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<?php
+								<?php
+							}
 						}
-					}
-				?>
-			</div>		<!-- end row -->
-
-		</div>			<!-- end tab-pane -->
-	</div>				<!-- end tab-content -->
+						wp_reset_postdata();
+						?>
+					</div>
+				</div>
+				<?php
+				$i++;
+			}
+		}
+		?>
+	</div>
 	<?php
 }
+
 
 // Recent Course for Single Page
 function edumark_recent_course(){

@@ -129,7 +129,7 @@ class Edumark_Review_Contents extends Widget_Base {
                 'label' => __( 'Review Text Color', 'edumark-companion' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .testmonial_area .testmonial_info p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .testimonial_area .testmonial_text p' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -138,16 +138,7 @@ class Edumark_Review_Contents extends Widget_Base {
                 'label' => __( 'Reviewer Name Color', 'edumark-companion' ),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .testmonial_area .testmonial_info .author_name h4' => 'color: {{VALUE}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'rev_desig_col', [
-                'label' => __( 'Reviewer Designation Color', 'edumark-companion' ),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .testmonial_area .testmonial_info .author_name span' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .testimonial_area .testmonial_text span' => 'color: {{VALUE}};',
                 ],
             ]
         );

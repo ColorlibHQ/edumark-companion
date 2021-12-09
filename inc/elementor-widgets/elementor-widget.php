@@ -394,23 +394,9 @@ if ( !class_exists( 'Edumark_El_Widgets' ) ) {
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/popular-courses.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/email-newsletter.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/blog.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/prising-area.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/core-feature-tab-items.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/course-speciality.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/support-section.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/data-centers.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/faq-section.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/lets-launch.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/pricing-tables.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/about-us.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/statistic-section.php';
-            require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/question-section.php';
-            // require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/services.php';
-            // require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/gallery.php';
-            // require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/video-section.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/team-members.php';
-            // require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/home-contact.php';
-            // require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/projects.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/review-section.php';
             require_once EDUMARK_COMPANION_EW_DIR_PATH . 'widgets/contact.php';
         }
@@ -437,21 +423,6 @@ if ( !class_exists( 'Edumark_El_Widgets' ) ) {
             \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Email_Newsletter() ); 
             \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Blog() ); 
             \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Team_Members() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Prising_Area() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Core_Feature_Tab_Items() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Core_Features() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Support_Section() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Data_Centers() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Faq_Section() ); 
-            \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Lets_Launch() ); 
-            \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Pricing_Section() ); 
-            \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Statistic_Section() ); 
-            \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Question_Section() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Services() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Gallery() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Video_Section() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Home_Contact() ); 
-            // \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Projects() ); 
             \Elementor\Plugin::instance()->widgets_manager->register_widget_type( new \Edumarkelementor\Widgets\Edumark_Contact() ); 
         }
 

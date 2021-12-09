@@ -76,11 +76,28 @@ class Edumark_Popular_Courses extends Widget_Base {
 				'label'         => esc_html__( 'Course Item', 'edumark-companion' ),
 				'type'          => Controls_Manager::NUMBER,
 				'label_block'   => false,
-                'default'       => absint(3),
+                'default'       => absint(6),
                 'min'           => 1,
                 'max'           => 6,
 			]
 		);
+        $this->add_control(
+            'btn_title',
+            [
+                'label'         => __( 'Read More Button Title', 'edumark-companion' ),
+                'type'          => Controls_Manager::TEXT,
+                'label_block'   => true,
+                'default'       => __( 'More Courses', 'edumark-companion' )
+            ]
+        );
+        $this->add_control(
+            'btn_url',
+            [
+                'label'         => __( 'Read More Button URL', 'edumark-companion' ),
+                'type'          => Controls_Manager::URL,
+                'label_block'   => true,
+            ]
+        );
 
         $this->end_controls_section(); // End few words content
 
@@ -96,7 +113,7 @@ class Edumark_Popular_Courses extends Widget_Base {
                 'label'     => __( 'Section Title Color', 'edumark-companion' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .latest_new_area .section_title h3' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .popular_courses .section_title h3' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -105,7 +122,7 @@ class Edumark_Popular_Courses extends Widget_Base {
                 'label'     => __( 'Section Sub Title Color', 'edumark-companion' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .latest_new_area .section_title p' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .popular_courses .section_title p' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -120,11 +137,13 @@ class Edumark_Popular_Courses extends Widget_Base {
         );
 
         $this->add_control(
-            'item_title_color', [
-                'label'     => __( 'Blog Title Color', 'edumark-companion' ),
+            'heighlighted_color', [
+                'label'     => __( 'Heighlighted Color', 'edumark-companion' ),
                 'type'      => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .latest_new_area .single_news .news_content h3 a' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .popular_courses .course_nav .nav li a.active::before' => 'background: {{VALUE}};',
+                    '{{WRAPPER}} .popular_courses .more_courses .boxed_btn_rev' => 'border-color: {{VALUE}} !important; color: {{VALUE}}',
+                    '{{WRAPPER}} .popular_courses .more_courses .boxed_btn_rev:hover' => 'background: {{VALUE}} !important; color: #fff !important',
                 ],
             ]
         );
@@ -138,6 +157,8 @@ class Edumark_Popular_Courses extends Widget_Base {
     $sec_title   = !empty( $settings['sec_title'] ) ? esc_html($settings['sec_title']) : '';
     $sub_title   = !empty( $settings['sub_title'] ) ? wp_kses_post(nl2br($settings['sub_title'])) : '';
     $course_item = !empty( $settings['course_item'] ) ? $settings['course_item'] : '';
+    $btn_title = !empty( $settings['btn_title'] ) ? $settings['btn_title'] : '';
+    $btn_url = !empty( $settings['btn_url']['url'] ) ? $settings['btn_url']['url'] : '';
     $dynamic_class = is_front_page() ? 'popular_courses' : 'popular_courses plus_padding';
     ?>
 
@@ -169,15 +190,21 @@ class Edumark_Popular_Courses extends Widget_Base {
 
         <div class="all_courses">
             <div class="container">
-                <?php edumark_course_section()?>
+                <?php 
+                    edumark_course_section($course_item);
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="more_courses text-center">
-                            <a href="#" class="boxed_btn_rev">More Courses</a>
+                    if ( $btn_title ) { 
+                        ?>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="more_courses text-center">
+                                    <a href="<?php echo esc_url( $btn_url )?>" class="boxed_btn_rev"><?php echo esc_html( $btn_title )?></a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                        <?php
+                    }
+                ?>
             </div>
         </div>
     </div>

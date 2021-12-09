@@ -34,7 +34,7 @@ class Edumark_Email_Newsletter extends Widget_Base {
 	}
 
 	public function get_icon() {
-		return 'eicon-settings';
+		return 'eicon-envelope';
 	}
 
 	public function get_categories() {
@@ -113,125 +113,11 @@ class Edumark_Email_Newsletter extends Widget_Base {
         ]
     );
     $this->add_control(
-        'section_title_col', [
-            'label' => __( 'Section Title Color', 'edumark-companion' ),
+        'bg_col', [
+            'label' => __( 'BG Color', 'edumark-companion' ),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .core_features .featuures_heading h3' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $this->add_control(
-        'icon_styles_separator', [
-            'label' => __( 'Icon Styles', 'edumark-companion' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'after'
-        ]
-    );
-    $this->add_control(
-        'first_icon_col', [
-            'label' => __( 'First Icon Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:first-child .icon' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'first_icon_bg_col', [
-            'label' => __( 'First Icon Bg Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:first-child .icon' => 'background: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'second_icon_col', [
-            'label' => __( 'Second Icon Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:nth-child(2) .icon' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'second_icon_bg_col', [
-            'label' => __( 'Second Icon Bg Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:nth-child(2) .icon' => 'background: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'third_icon_col', [
-            'label' => __( 'Third Icon Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:nth-child(3) .icon' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'third_icon_bg_col', [
-            'label' => __( 'Third Icon Bg Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:nth-child(3) .icon' => 'background: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'fourth_icon_col', [
-            'label' => __( 'Fourth Icon Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:last-child .icon' => 'color: {{VALUE}};',
-            ],
-        ]
-    );
-    $this->add_control(
-        'fourth_icon_bg_col', [
-            'label' => __( 'Fourth Icon Bg Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .tab-pane .row .col-xl-6:last-child .icon' => 'background: {{VALUE}};',
-            ],
-        ]
-    );
-
-    $this->add_control(
-        'icon_hover_styles_separator', [
-            'label' => __( 'Icon Hover Styles', 'edumark-companion' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'after'
-        ]
-    );
-    $this->add_control(
-        'icon_hover_bg_color', [
-            'label' => __( 'Icon Hover BG Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .single_features:hover .icon' => 'background: {{VALUE}} !important;',
-            ],
-        ]
-    );
-
-    $this->add_control(
-        'inner_styles_separator', [
-            'label' => __( 'Inner Styles', 'edumark-companion' ),
-            'type' => Controls_Manager::HEADING,
-            'separator' => 'after'
-        ]
-    );
-    $this->add_control(
-        'title_col', [
-            'label' => __( 'Title Color', 'edumark-companion' ),
-            'type' => Controls_Manager::COLOR,
-            'selectors' => [
-                '{{WRAPPER}} .core_features .features_info h4' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .subscribe_newsletter' => 'background: {{VALUE}};',
             ],
         ]
     );
@@ -240,7 +126,18 @@ class Edumark_Email_Newsletter extends Widget_Base {
             'label' => __( 'Text Color', 'edumark-companion' ),
             'type' => Controls_Manager::COLOR,
             'selectors' => [
-                '{{WRAPPER}} .core_features .features_info p' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .subscribe_newsletter .newsletter_text h3' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .subscribe_newsletter .newsletter_text p' => 'color: {{VALUE}};',
+                '{{WRAPPER}} .subscribe_newsletter .newsletter_form h4' => 'color: {{VALUE}};',
+            ],
+        ]
+    );
+    $this->add_control(
+        'btn_col', [
+            'label' => __( 'Button BG Color', 'edumark-companion' ),
+            'type' => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .subscribe_newsletter .newsletter_form .newsletter_form button' => 'background: {{VALUE}};',
             ],
         ]
     );

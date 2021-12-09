@@ -107,29 +107,11 @@ class Edumark_Hero extends Widget_Base {
 			]
 		);
 		$this->add_control(
-			'bg_overlay_col', [
-				'label' => __( 'BG Overlay Color', 'edumark-companion' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .slider_area .single_slider::before' => 'background: {{VALUE}};',
-				],
-			]
-        );
-		$this->add_control(
-			'sub_title_col', [
-				'label' => __( 'Sub Title Color', 'edumark-companion' ),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .slider_area .single_slider .slider_text p' => 'color: {{VALUE}};',
-				],
-			]
-        );
-		$this->add_control(
 			'big_title_col', [
 				'label' => __( 'Big Title Color', 'edumark-companion' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slider_area .single_slider .slider_text h3' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .slider_area .single_slider .slider_info h3' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -138,16 +120,17 @@ class Edumark_Hero extends Widget_Base {
 				'label' => __( 'Button BG Color', 'edumark-companion' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slider_area .find_dowmain .find_dowmain_form button' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .slider_area .single_slider .slider_info .boxed_btn' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .slider_area .single_slider .slider_info .boxed_btn:hover' => 'background: transparent; border-color: {{VALUE}}; color: {{VALUE}} !important',
 				],
 			]
 		);
 		$this->add_control(
-			'btn_bg_hov_col', [
-				'label' => __( 'Button Hover BG Color', 'edumark-companion' ),
+			'btn_hover_col', [
+				'label' => __( 'Button Hover Color', 'edumark-companion' ),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slider_area .find_dowmain .find_dowmain_form button:hover' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .slider_area .single_slider .slider_info .boxed_btn:hover' => 'background: transparent; border-color: {{VALUE}}; color: {{VALUE}} !important',
 				],
 			]
 		);
